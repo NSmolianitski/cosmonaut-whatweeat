@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhatWeEat", "WhatWeEat\WhatWeEat.csproj", "{4AF3F79B-F80F-4E10-AC72-D82D03D2DF92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmonautCandidateSurvey", "CosmonautCandidateSurvey\CosmonautCandidateSurvey.csproj", "{6A2F0AB2-3E8D-4169-95E8-4838FB230A09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmonautCandidateSurvey.Tests", "CosmonautCandidateSurvey.Tests\CosmonautCandidateSurvey.Tests.csproj", "{7449264B-D5E3-446C-985A-57B824F5C5D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AF3F79B-F80F-4E10-AC72-D82D03D2DF92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AF3F79B-F80F-4E10-AC72-D82D03D2DF92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AF3F79B-F80F-4E10-AC72-D82D03D2DF92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AF3F79B-F80F-4E10-AC72-D82D03D2DF92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A2F0AB2-3E8D-4169-95E8-4838FB230A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A2F0AB2-3E8D-4169-95E8-4838FB230A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A2F0AB2-3E8D-4169-95E8-4838FB230A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A2F0AB2-3E8D-4169-95E8-4838FB230A09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7449264B-D5E3-446C-985A-57B824F5C5D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7449264B-D5E3-446C-985A-57B824F5C5D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7449264B-D5E3-446C-985A-57B824F5C5D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7449264B-D5E3-446C-985A-57B824F5C5D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

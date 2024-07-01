@@ -1,0 +1,13 @@
+﻿@model WhatWeEat.ViewModels.FeedViewModel
+
+<div>
+    <div class="card card-body text-white bg-success">
+        @Model.WelcomeMessage
+    </div>
+    <hr/>
+    <h2>Также люди едят:</h2>
+    @foreach (var eatRecord in Model.EatRecords)
+    {
+        <div class="alert alert-primary">@eatRecord</div>
+    }
+</div>

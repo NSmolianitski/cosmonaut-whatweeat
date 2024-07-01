@@ -1,0 +1,91 @@
+﻿@using WhatWeEat.ViewModels
+@model WhatWeEat.ViewModels.FoodFormViewModel
+
+<div>
+    <h1 class="display-4 text-center">Что мы едим</h1>
+    <form asp-action="SubmitForm" method="post">
+        <div class="form-group mb-3">
+            <label asp-for="UserName">Имя:</label>
+            <input asp-for="UserName" type="text" class="form-control" placeholder="Введите имя"/>
+            <span asp-validation-for="UserName" id="username-form-error-field" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Email">Email:</label>
+            <input asp-for="Email" type="text" class="form-control" placeholder="Введите email"/>
+            <span asp-validation-for="Email" id="email-form-error-field" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="SelectedMeal">Выберите блюдо:</label>
+            <select asp-for="SelectedMeal" class="form-control">
+                @foreach (var dish in Model.Meals)
+                {
+                    <option value="@dish.Value">@dish.Text</option>
+                }
+            </select>
+            <span asp-validation-for="SelectedMeal" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success">Рассказать о том, что я ем</button>
+    </form>
+    
+    <hr/>
+    
+    <div class="d-flex flex-column align-items-center">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-meal-modal">
+            <img src="~/images/meal-icon.png" alt="Meal Icon" class="mr-2" style="vertical-align: middle; width: 64px; height: 64px;">
+            Добавить новое блюдо
+        </button>
+    </div>
+
+    <div class="modal fade" id="create-meal-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                @{ await Html.RenderPartialAsync("_CreateMealModal", new MealViewModel()); }
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+        <script>
+            // Modal response handle function
+            $(document).ready(function () {
+                $('#create-meal-form').submit(function (event) {
+                    event.preventDefault();
+                    
+                    console.log("Hello!");
+                    
+                    const $form = $(this);
+                    $.ajax({
+                        type: $form.attr('method'),
+                        url: $form.attr('action'),
+                        data: $form.serialize(),
+                        success: function (response) {
+                            if (response.success) {
+                                $('#create-meal-modal').modal('hide');
+                                location.reload();
+                            } else {
+                                $form.find('#create-meal-error-text').text('');
+                                const errors = response.errors;
+                                for (let i = 0; i < errors.length; i++) {
+                                    const error = errors[i];
+                                    const $span = $form.find(`span[data-valmsg-for="${error.key}"]`);
+                                    $span.html(error.errorMessage);
+                                }
+                            }
+                        },
+                        error: function () {
+                            alert('Произошла ошибка при добавлении блюда.');
+                        }
+                    });
+                });
+    
+                $('#create-meal-modal').on('hidden.bs.modal', function () {
+                    $(this).find('#create-meal-error-text').text('');
+                    $(this).find('input[type="text"]').val('');
+                });
+            });
+        </script>
+    }
+
+</div>
